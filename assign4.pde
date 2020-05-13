@@ -95,8 +95,40 @@ void setup() {
 		for (int j = 0; j < soilHealth[i].length; j++) {
 			 // 0: no soil, 15: soil only, 30: 1 stone, 45: 2 stones
 			soilHealth[i][j] = 15;
-		}
-	}
+      // floor 1~8
+      if(j>=0 && j<8){
+        if(i == j) soilHealth[i][j] = 30;
+      }
+      
+      // floor 9~16
+      if(j>=8 && j<16){
+        if((j%4==0 || j%4==3) && (i%4==1 || i%4==2))
+          soilHealth[i][j] = 30;
+        if((j%4==1 || j%4==2) && (i%4==0 || i%4==3))
+          soilHealth[i][j] = 30;
+      }
+      
+      // floor 17~24
+      if (j>=16 && j<24){
+        if(j%3 == 1){
+          if(i%3 != 0) soilHealth[i][j] = 30;
+          if(i%3 == 2) soilHealth[i][j] = 45;
+        }
+        if(j%3 == 2){
+          if(i%3 != 2) soilHealth[i][j] = 30;
+          if(i%3 == 1) soilHealth[i][j] = 45;
+        }
+          
+        if(j%3 == 0){
+          if(i%3 != 1) soilHealth[i][j] = 30;
+          if(i%3 == 0) soilHealth[i][j] = 45;
+        }
+      }
+    }
+  }
+  //random soil empty
+  
+		
 
 	// Initialize soidiers and their position
 
@@ -162,6 +194,35 @@ void draw() {
 				
 			}
 		}
+    //rock
+    for(int i = 0;i <soilHealth.length;i++){
+      for(int j = 0;j<soilHealth[i].length;j++){
+    // stones 1
+        if(soilHealth[i][j] > 15 && soilHealth[i][j] <= 18) 
+          image(stones[0][0], i * SOIL_SIZE, j * SOIL_SIZE);
+        else if(soilHealth[i][j] > 18 && soilHealth[i][j] <= 21)
+          image(stones[0][1], i * SOIL_SIZE, j * SOIL_SIZE);
+        else if(soilHealth[i][j] > 21 && soilHealth[i][j] <= 24)
+          image(stones[0][2], i * SOIL_SIZE, j * SOIL_SIZE);
+        else if(soilHealth[i][j] > 24 && soilHealth[i][j] <= 27)
+          image(stones[0][3], i * SOIL_SIZE, j * SOIL_SIZE);
+        else if(soilHealth[i][j] > 27 && soilHealth[i][j] <= 45)
+          image(stones[0][4], i * SOIL_SIZE, j * SOIL_SIZE);
+                   
+        // stones 2
+        if(soilHealth[i][j] > 30 && soilHealth[i][j] <= 33) 
+          image(stones[1][0], i * SOIL_SIZE, j * SOIL_SIZE);
+        else if(soilHealth[i][j] > 33 && soilHealth[i][j] <= 36)
+          image(stones[1][1], i * SOIL_SIZE, j * SOIL_SIZE);
+        else if(soilHealth[i][j] > 36 && soilHealth[i][j] <= 39)
+          image(stones[1][2], i * SOIL_SIZE, j * SOIL_SIZE);
+        else if(soilHealth[i][j] > 39 && soilHealth[i][j] <= 42)
+          image(stones[1][3], i * SOIL_SIZE, j * SOIL_SIZE);
+        else if(soilHealth[i][j] > 42 && soilHealth[i][j] <= 45)
+          image(stones[1][4], i * SOIL_SIZE, j * SOIL_SIZE);
+          
+      }
+    }
 
 		// Cabbages
 		// > Remember to check if playerHealth is smaller than PLAYER_MAX_HEALTH!
