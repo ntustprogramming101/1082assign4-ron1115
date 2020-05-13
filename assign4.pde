@@ -131,6 +131,16 @@ void setup() {
           if(i%3 == 0) soilHealth[i][j] = 45;
         }
       }
+      
+      //stones 1
+        if(soilHealth[i][j]==30) 
+          image(stones[0][4], i * SOIL_SIZE, j * SOIL_SIZE);
+        
+                   
+        // stones 2
+  
+        if(soilHealth[i][j] == 45)
+          image(stones[1][4], i * SOIL_SIZE, j * SOIL_SIZE);
     }
   }
   //random soil empty
@@ -188,8 +198,7 @@ void draw() {
 		fill(124, 204, 25);
 		noStroke();
 		rect(0, -GRASS_HEIGHT, width, GRASS_HEIGHT);
-
-		// Soil
+// Soil
 
 		for(int i = 0; i < soilHealth.length; i++){
 			for (int j = 0; j < soilHealth[i].length; j++) {
@@ -201,31 +210,17 @@ void draw() {
 				
 			}
 		}
-    //rock
+//rock
     for(int i = 0;i <soilHealth.length;i++){
       for(int j = 0;j<soilHealth[i].length;j++){
     // stones 1
-        if(soilHealth[i][j] > 15 && soilHealth[i][j] <= 18) 
-          image(stones[0][0], i * SOIL_SIZE, j * SOIL_SIZE);
-        else if(soilHealth[i][j] > 18 && soilHealth[i][j] <= 21)
-          image(stones[0][1], i * SOIL_SIZE, j * SOIL_SIZE);
-        else if(soilHealth[i][j] > 21 && soilHealth[i][j] <= 24)
-          image(stones[0][2], i * SOIL_SIZE, j * SOIL_SIZE);
-        else if(soilHealth[i][j] > 24 && soilHealth[i][j] <= 27)
-          image(stones[0][3], i * SOIL_SIZE, j * SOIL_SIZE);
-        else if(soilHealth[i][j] > 27 && soilHealth[i][j] <= 45)
+        if(soilHealth[i][j]==30) 
           image(stones[0][4], i * SOIL_SIZE, j * SOIL_SIZE);
+        
                    
         // stones 2
-        if(soilHealth[i][j] > 30 && soilHealth[i][j] <= 33) 
-          image(stones[1][0], i * SOIL_SIZE, j * SOIL_SIZE);
-        else if(soilHealth[i][j] > 33 && soilHealth[i][j] <= 36)
-          image(stones[1][1], i * SOIL_SIZE, j * SOIL_SIZE);
-        else if(soilHealth[i][j] > 36 && soilHealth[i][j] <= 39)
-          image(stones[1][2], i * SOIL_SIZE, j * SOIL_SIZE);
-        else if(soilHealth[i][j] > 39 && soilHealth[i][j] <= 42)
-          image(stones[1][3], i * SOIL_SIZE, j * SOIL_SIZE);
-        else if(soilHealth[i][j] > 42 && soilHealth[i][j] <= 45)
+  
+        if(soilHealth[i][j] == 45)
           image(stones[1][4], i * SOIL_SIZE, j * SOIL_SIZE);
           
       }
