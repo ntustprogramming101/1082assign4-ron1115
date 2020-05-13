@@ -144,6 +144,12 @@ void setup() {
     }
   }
   //random soil empty
+  for (int j = 1; j < SOIL_ROW_COUNT; j++) {
+    int e1 = (int)random(SOIL_COL_COUNT);
+    int e2 = (int)random(SOIL_COL_COUNT);
+    soilHealth[e1][j] = 0;
+    soilHealth[e2][j] = 0;
+  }
   
 		
 
@@ -218,10 +224,13 @@ void draw() {
           image(stones[0][4], i * SOIL_SIZE, j * SOIL_SIZE);
         
                    
-        // stones 2
+    // stones 2
   
         if(soilHealth[i][j] == 45)
           image(stones[1][4], i * SOIL_SIZE, j * SOIL_SIZE);
+          
+    //empty
+       if(soilHealth[i][j] == 0) image(soilEmpty, i * SOIL_SIZE, j * SOIL_SIZE);
           
       }
     }
